@@ -15,10 +15,11 @@
             background: #fff;
             border-radius: 2rem;
             box-shadow: 0 8px 32px rgba(79,140,255,0.08), 0 1.5px 4px rgba(0,0,0,0.03);
-            padding: 2.5rem 2rem 2rem 2rem;
+            padding: 3.5rem 3rem 3rem 3rem;
             margin-top: 3.5rem;
             margin-bottom: 2rem;
-            max-width: 680px;
+            max-width: 960px;
+            width: 100%;
         }
         .header-premium {
             background: linear-gradient(90deg, #4f8cff 0%, #6fc3ff 100%);
