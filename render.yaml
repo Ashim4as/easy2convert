@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: laravel-app
+    env: docker
+    buildCommand: |
+      apt-get update
+      apt-get install -y php-cli unzip curl php-mbstring git php-xml php-bcmath php-curl php-tokenizer php-sqlite3 php-zip
+      curl -sS https://getcomposer.org/installer | php
+      php composer.phar install --no-dev --optimize-autoloader
+    startCommand: |
+      php artisan key:generate
+      php artisan migrate --force
+      php artisan serve --host 0.0.0.0 --port 10000
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://your-app-name.onrender.com
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /data/database.sqlite
+    plan: free
+    autoDeploy: true
+    buildFilter:
+      paths:
+        - '**/*'
